@@ -5,8 +5,8 @@ on:
     branches:
       - main
 env:
-  DEV_VAR: ${{ vars.DEV_VAR }}
-  TEST_VAR: ${{ vars.TEST_VAR }}
+  
+  
   
   
   
@@ -17,18 +17,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
-      - name: Display env
-        run: echo '${{ toJSON(env) }}'
 
       - name: Dev var
         run: echo $DEV_VAR
+        env:
+          DEV_VAR: ${{ vars.DEV_VAR }}
+
       - name: Test var
         run: echo $TEST_VAR
+        env:
+          TEST_VAR: ${{ vars.TEST_VAR }}
+
       - name: Dev sec
         run: echo $DEV_SECRET
         env: 
           DEV_SECRET: ${{ secrets.DEV_SECRET}}
+
       - name: Test sec
         run: echo $TEST_SECRET
         env:
