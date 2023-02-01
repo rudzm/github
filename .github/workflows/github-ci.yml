@@ -4,12 +4,6 @@ on:
   push:
     branches:
       - main
-env:
-  
-  
-  
-  
-  
 
 jobs:
   testing:
