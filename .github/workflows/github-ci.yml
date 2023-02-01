@@ -7,8 +7,8 @@ on:
 env:
   DEV_VAR: ${{ vars.DEV_VAR }}
   TEST_VAR: ${{ vars.TEST_VAR }}
-  DEV_SECRET: ${{ secret.DEV_SECRET}}
-  TEST_SECRET: ${{ secret.TEST_SECRET}}
+  DEV_SECRET: ${{ secrets.DEV_SECRET}}
+  TEST_SECRET: ${{ secrets.TEST_SECRET}}
   
 
 jobs:
