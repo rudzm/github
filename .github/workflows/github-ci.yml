@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+env:
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
 jobs:
   testing:
