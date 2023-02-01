@@ -21,6 +21,7 @@ jobs:
         run: echo ${{ vars.DEV_VAR }} 
       - name: Test
         run: echo ${{ vars.TEST_VAR }} 
+        
       # - name: Display secret
       #   run: echo '${{ toJSON(secret) }}'
       # - name: Dump GitHub context
