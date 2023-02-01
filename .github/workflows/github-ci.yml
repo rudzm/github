@@ -13,7 +13,9 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Display env
-        run: echo '${{ toJSON(env)}}'
+        run: echo '${{ toJSON(env) }}'
+      - name: Display env
+        run: echo '${{ toJSON(secret) }}'
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
