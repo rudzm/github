@@ -7,6 +7,9 @@ on:
 env:
   DEV_VAR: ${{ vars.DEV_VAR }}
   TEST_VAR: ${{ vars.TEST_VAR }}
+  DEV_SECRET: ${{ secret.DEV_SECRET}}
+  TEST_SECRET: ${{ secret.TEST_SECRET}}
+  
 
 jobs:
   testing:
@@ -18,10 +21,14 @@ jobs:
       - name: Display env
         run: echo '${{ toJSON(env) }}'
 
-      - name: Dev
+      - name: Dev var
         run: echo $DEV_VAR
-      - name: Test
+      - name: Test var
         run: echo $TEST_VAR
+      - name: Dev sec
+        run: echo $DEV_SECRET
+      - name: Test sec
+        run: echo $TEST_SECRET
 
       # - name: Display secret
       #   run: echo '${{ toJSON(secret) }}'
