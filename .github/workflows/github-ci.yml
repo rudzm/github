@@ -16,9 +16,9 @@ jobs:
         run: echo '${{ toJSON(env) }}'
 
       - name: Dev
-        run: echo $DEV_VAR $DEV_SECRET
+        run: echo ${{ var.DEV_VAR }} ${{ secret.DEV_SECRET }}
       - name: Test
-        run: echo $TEST_VAR $TEST_SECRET
+        run: echo ${{ var.TEST_VAR }} ${{ secret.TEST_SECRET }}
       # - name: Display secret
       #   run: echo '${{ toJSON(secret) }}'
       # - name: Dump GitHub context
