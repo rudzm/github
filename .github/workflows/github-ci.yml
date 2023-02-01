@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+env:
+  DEV_VAR: ${{ vars.DEV_VAR }}
+  TEST_VAR: ${{ vars.TEST_VAR }}
 
 jobs:
   testing:
@@ -16,9 +19,9 @@ jobs:
         run: echo '${{ toJSON(env) }}'
 
       - name: Dev
-        run: echo ${{ vars.DEV_VAR }} 
+        run: echo $DEV_VAR
       - name: Test
-        run: echo ${{ vars.TEST_VAR }} 
+        run: echo $TEST_VAR
 
       # - name: Display secret
       #   run: echo '${{ toJSON(secret) }}'
