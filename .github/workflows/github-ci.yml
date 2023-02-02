@@ -19,7 +19,9 @@ jobs:
         #   DEV_VAR: '${{ vars.DEV_VAR }}'
 
       - name: Dev sec
-        run: echo $GITHUB_SHA
+        run: echo $TEST
+        env:
+          TEST: ${{ env.GITHUB_SHA }}
         # env: 
         #   DEV_SECRET: '${{ secrets.DEV_SECRET}}'
 
