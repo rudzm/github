@@ -21,7 +21,7 @@ jobs:
       - name: Dev sec
         run: echo $TEST
         env:
-          TEST: ${{ env.GITHUB_SHA }}
+          TEST: ${{ github.sha }}
         # env: 
         #   DEV_SECRET: '${{ secrets.DEV_SECRET}}'
 
