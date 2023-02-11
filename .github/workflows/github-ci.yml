@@ -13,4 +13,4 @@ jobs:
 
       - name: Test
         run: |
-          echo ${{ GITHUB_REF_NAME }}
+          echo ${{ vars.GITHUB_REF_NAME }}
