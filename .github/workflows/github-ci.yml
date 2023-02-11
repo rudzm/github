@@ -1,10 +1,11 @@
 name: "Testing"
 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch:
+    inputs:
+      branchName:
+        description: 'Branch name to deploy'
+        required: true
 jobs:
   testing:
     runs-on: "ubuntu-latest"
