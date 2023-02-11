@@ -13,6 +13,15 @@ jobs:
         with: 
           ref: ${{ github.ref.name }}
 
-      - name: Test
+      - name: GITHUB_WORKFLOW_REF
         run: |
           echo $GITHUB_WORKFLOW_REF
+      - name: GITHUB_REF_NAME
+        run: |
+          echo $GITHUB_REF_NAME
+      - name: GITHUB_REF
+        run: |
+          echo $GITHUB_REF      
+      - name: GITHUB_HEAD_REF
+        run: |
+          echo $GITHUB_HEAD_REF
