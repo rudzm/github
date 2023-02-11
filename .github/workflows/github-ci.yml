@@ -13,32 +13,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Dev var
-        run: echo ${{ vars.DEV_VAR }}
-        # env:
-        #   DEV_VAR: '${{ vars.DEV_VAR }}'
-
-      - name: Dev sec
-        run: echo $TEST
-        env:
-          TEST: ${{ github.sha }}
-        # env: 
-        #   DEV_SECRET: '${{ secrets.DEV_SECRET}}'
-
-
-      # - name: Display secret
-      #   run: echo '${{ toJSON(secret) }}'
-      # - name: Dump GitHub context
-      #   id: github_context_step
-      #   run: echo '${{ toJSON(github) }}'
-      # - name: Dump job context
-      #   run: echo '${{ toJSON(job) }}'
-      # - name: Dump steps context
-      #   run: echo '${{ toJSON(steps) }}'
-      # - name: Dump runner context
-      #   run: echo '${{ toJSON(runner) }}'
-      # - name: Dump strategy context
-      #   run: echo '${{ toJSON(strategy) }}'
-      # - name: Dump matrix context
-      #   run: echo '${{ toJSON(matrix) }}'
+        with: 
+          ref: ${{ inputs.branchName }}
