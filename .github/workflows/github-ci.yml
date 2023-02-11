@@ -10,5 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with: 
-          ref: ${{ inputs.branchName }}
+
+      - name: Test
+        run: |
+          echo ${{ github.ref.name }}
