@@ -40,4 +40,4 @@ jobs:
       
       - name: Echo env vars
         run: |
-          echo ${{ envs.PROJECT_ID }}
+          echo ${{ env.PROJECT_ID }}
