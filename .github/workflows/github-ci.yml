@@ -2,11 +2,20 @@ name: "Testing"
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select Env"
+        required: true
+        default: 'dev'
+        options:
+          - dev 
+          - test
+
 
 jobs:
   testing:
     runs-on: "ubuntu-latest"
-    environment: dev
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,3 +37,7 @@ jobs:
       - name: GITHUB_HEAD_REF
         run: |
           echo $GITHUB_HEAD_REF
+      
+      - name: Echo env vars
+        run: |
+          echo ${{ envs.PROJECT_ID }}
