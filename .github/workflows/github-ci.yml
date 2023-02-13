@@ -41,3 +41,11 @@ jobs:
       - name: Echo env vars
         run: |
           echo ${{ vars.PROJECT_ID }}
+
+      - name: Add var via bash
+        run: |
+          echo "GITHUB_REF_SANITIZE=${GITHUB_REF//[\/_]/-}" >> $GITHUB_ENV
+
+      - name: Echo new env
+        run: |
+          echo ${{ env.GITHUB_REF_SANITIZE }}
