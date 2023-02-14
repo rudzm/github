@@ -25,7 +25,7 @@ jobs:
         run: |
           echo $MY_TABEL
 
-        if: contains( ${{ env.MY_TABEL}}, 'supply')
+        if: contains( fromJSON(${{ env.MY_TABEL}}), 'supply')
       - name: test condition
         run: |
           echo "Mamy to"
