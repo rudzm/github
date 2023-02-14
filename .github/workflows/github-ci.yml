@@ -25,7 +25,11 @@ jobs:
         run: |
           echo $MY_TABEL
 
-        if: contains( fromJSON(${{ env.MY_TABEL}}), 'supply')
+
+  testing2:
+    runs-on: "ubuntu-latest"
+    if: contains( fromJSON(${{ env.MY_TABEL}}), 'supply')
+    steps:
       - name: test condition
         run: |
           echo "Mamy to"
