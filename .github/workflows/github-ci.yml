@@ -25,6 +25,11 @@ jobs:
         run: |
           echo $MY_TABEL
 
+      - name: test condition
+        if: contains( ${{ env.MY_TABEL}}, 'supply')
+        run: |
+          echo "Mamy to"
+
       # - name: GITHUB_WORKFLOW_REF
       #   run: |
       #     echo $GITHUB_WORKFLOW_REF
