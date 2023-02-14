@@ -4,48 +4,51 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: "Select Env"
-        required: true
-        default: 'dev'
-        options:
-          - dev 
-          - test
+        type: environment
 
 
 jobs:
   testing:
     runs-on: "ubuntu-latest"
-    environment: ${{ inputs.environment }}
+    # environment: ${{ inputs.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with: 
           ref: ${{ github.ref.name }}
 
-      - name: GITHUB_WORKFLOW_REF
+      - name: Set var
         run: |
-          echo $GITHUB_WORKFLOW_REF
+          echo  'MY_TABEL={["supply", "supply2", "supply3"]}' >> $GITHUB_ENV
 
-      - name: GITHUB_REF_NAME
+      - name: echo var
         run: |
-          echo $GITHUB_REF_NAME
+          echo $MY_TABEL
 
-      - name: GITHUB_REF
-        run: |
-          echo $GITHUB_REF      
+      # - name: GITHUB_WORKFLOW_REF
+      #   run: |
+      #     echo $GITHUB_WORKFLOW_REF
+
+      # - name: GITHUB_REF_NAME
+      #   run: |
+      #     echo $GITHUB_REF_NAME
+
+      # - name: GITHUB_REF
+      #   run: |
+      #     echo $GITHUB_REF      
           
-      - name: GITHUB_HEAD_REF
-        run: |
-          echo $GITHUB_HEAD_REF
+      # - name: GITHUB_HEAD_REF
+      #   run: |
+      #     echo $GITHUB_HEAD_REF
       
-      - name: Echo env vars
-        run: |
-          echo ${{ vars.PROJECT_ID }}
+      # - name: Echo env vars
+      #   run: |
+      #     echo ${{ vars.PROJECT_ID }}
 
-      - name: Add var via bash
-        run: |
-          echo "GITHUB_REF_SANITIZE=${GITHUB_REF//[\/_]/-}" >> $GITHUB_ENV
+      # - name: Add var via bash
+      #   run: |
+      #     echo "GITHUB_REF_SANITIZE=${GITHUB_REF//[\/_]/-}" >> $GITHUB_ENV
 
-      - name: Echo new env
-        run: |
-          echo ${{ env.GITHUB_REF_SANITIZE }}
+      # - name: Echo new env
+      #   run: |
+      #     echo ${{ env.GITHUB_REF_SANITIZE }}
