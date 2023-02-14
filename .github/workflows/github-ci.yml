@@ -19,7 +19,7 @@ jobs:
 
       - name: Set var
         run: |
-          echo  'MY_TABEL="supply" "supply2" "supply3" >> $GITHUB_ENV
+          echo  'MY_TABEL="supply""supply2""supply3" >> $GITHUB_ENV
 
       - name: echo var
         run: |
