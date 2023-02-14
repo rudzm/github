@@ -19,7 +19,7 @@ jobs:
 
       - name: Set var
         run: |
-          echo  'MY_TABEL=""' >> $GITHUB_ENV
+          echo  'MY_TABEL="TestValue"' >> $GITHUB_ENV
 
       - name: echo var
         run: |
@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: test condition
         run: |
-          echo "Mamy to"
+          echo "Mamy to: $MY_TABEL"
 
       # - name: GITHUB_WORKFLOW_REF
       #   run: |
