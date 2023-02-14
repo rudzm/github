@@ -27,6 +27,7 @@ jobs:
 
 
   testing2:
+    needs: testing
     runs-on: "ubuntu-latest"
     if: contains( fromJSON(${{ env.MY_TABEL}}), 'supply')
     steps:
