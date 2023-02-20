@@ -30,11 +30,8 @@ jobs:
 
       - name: assigne test
         run: |
-          if [ "supply" = gcloud run services list --format=json | jq '.[].metadata | select(.name == "supply")| .name']; then
-            echo 'WYNIK1=1' >> $GITHUB_ENV 
-          else 
-            echo 'WYNIK1=0' >> $GITHUB_ENV
-          fi
+          a=`gcloud run services list --format=json | jq '.[].metadata | select(.name == "supply")| .name'`
+          echo $a
 
       # - name: Set var
       #   run: |
@@ -66,10 +63,7 @@ jobs:
       - name: echo wynik1
         run: |
           echo $WYNIK1
-      
-      - name: echo wynik2
-        run: |
-          echo $WYNIK2
+
 
 
       # - name: GITHUB_WORKFLOW_REF
