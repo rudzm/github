@@ -40,6 +40,7 @@ jobs:
           test -z "$a"
           echo 'WYNIK1=$?' >>$GITHUB_ENV
           echo 'WYNIK2=$a' >>$GITHUB_ENV
+          exit 0
 
       - name: echo wynik1
         run: |
