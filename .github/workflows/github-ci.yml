@@ -36,8 +36,8 @@ jobs:
 
       - name: assigne test
         run: |-
-          echo 'a=$(ls -l)' >> $GITHUB_ENV
-          if [-z "$a"]; then
+          a=$(ls -l)
+          if [[-z "$a"]]; then
             echo 'WYNIK1=$?' >> $GITHUB_ENV 
           else 
             echo 'WYNIK1=$?' >> $GITHUB_ENV
