@@ -37,7 +37,7 @@ jobs:
       - name: assigne test
         run: |
           a=$(ls -l)
-          [ -z $a ]
+          test -z $a 
           echo 'WYNIK1=$?' >>$GITHUB_ENV
           echo 'WYNIK2=$a' >>$GITHUB_ENV
 
