@@ -34,6 +34,22 @@ jobs:
         run: |
           echo ${{ inputs.environment }}
 
+      - name: assigne test
+        run: |
+          a=$(ls \
+              -l)
+          [ -z $a ]
+          echo 'WYNIK1=$?' >>$GITHUB_ENV
+          echo 'WYNIK2=$a' >>$GITHUB_ENV
+
+      - name: echo wynik1
+        run: |
+          echo $WYNIK1
+      
+      - name: echo wynik2
+        run: |
+          echo $WYNIK2
+
 
       # - name: GITHUB_WORKFLOW_REF
       #   run: |
