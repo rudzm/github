@@ -30,6 +30,11 @@ jobs:
         run: |
           echo "Mamy to: $MY_TABEL"
 
+      - name: echo env
+        run: |
+          echo ${{ inputs.environment }}
+
+
       # - name: GITHUB_WORKFLOW_REF
       #   run: |
       #     echo $GITHUB_WORKFLOW_REF
