@@ -37,7 +37,7 @@ jobs:
       - name: assigne test
         run: |
           a=$(ls -l)
-          if -z "$a"; then echo 'WYNIK1=$?' >>$GITHUB_ENV; else 'WYNIK1=$?' >>$GITHUB_ENV; fi
+          if [-z "$a"]; then echo 'WYNIK1=$?' >>$GITHUB_ENV; else 'WYNIK1=$?' >>$GITHUB_ENV; fi
           echo 'WYNIK2=$a' >>$GITHUB_ENV
 
       - name: echo wynik1
