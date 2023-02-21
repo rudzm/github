@@ -10,7 +10,7 @@ on:
 jobs:
   testing:
     runs-on: "ubuntu-latest"
-    environment: ${{ inputs.environment }}
+    # environment: ${{ inputs.environment }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,11 +31,6 @@ jobs:
       - name: assigne test
         run: |
           service=`gcloud run services list --format=json | jq '.[].metadata | select(.name == "supply")| .name'`
-          if [ "\"supply\"" = $service]; then
-            echo 'WYNIK1=1' >> $GITHUB_ENV 
-          else 
-            echo 'WYNIK1=0' >> $GITHUB_ENV
-          fi
           echo 'WYNIK2=$service' >> $GITHUB_ENV
 
       # - name: Set var
