@@ -39,7 +39,7 @@ jobs:
           echo ${{ env.MY_REF }}
           echo $MY_REF
         env:
-          MY_REF: ${{ github.ref.name }}
+          MY_REF: ${{ inputs.environment }}
 
 
       # - name: Set var
