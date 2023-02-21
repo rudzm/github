@@ -32,7 +32,7 @@ jobs:
         run: |
           service=`gcloud run services list --format=json`
           name=`echo "$service" | jq '.[].metadata.name'`
-          echo "WYNIK1=1" >> $GITHUB_ENV
+          echo "WYNIK1=$name" >> $GITHUB_ENV
 
       # - name: assigne test
       #   run: |
