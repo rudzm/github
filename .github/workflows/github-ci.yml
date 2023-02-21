@@ -31,7 +31,7 @@ jobs:
       - name: assigne test
         run: |
           service=`gcloud run services list --format=json | jq -r '.[].metadata | select(.name == "supply")| .name'`
-          if [ "\"supply\"" = $service ]; then
+          if [ "supply" = $service ]; then
             echo "WYNIK1=1" >> $GITHUB_ENV
           else
             echo "WYNIK1=0" >> $GITHUB_ENV
@@ -72,6 +72,9 @@ jobs:
       - name: echo my_ref
         run: |
           echo ${{ env.MY_REF }}
+      - name: echo my_ref
+        run: |
+          echo ${{ env.WYNIK1 }}
 
       # - name: GITHUB_WORKFLOW_REF
       #   run: |
