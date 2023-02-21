@@ -36,6 +36,7 @@ jobs:
           else
             echo "WYNIK1=0" >> $GITHUB_ENV
           fi
+          echo "WYNIK2=$service" >> $GITHUB_ENV
 
 
       # - name: Set var
