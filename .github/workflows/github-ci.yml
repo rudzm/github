@@ -37,6 +37,7 @@ jobs:
             echo "WYNIK1=0" >> $GITHUB_ENV
           fi
           echo ${{ env.MY_REF }}
+          echo $MY_REF
         env:
           MY_REF: ${{ github.ref.name }}
 
