@@ -31,7 +31,11 @@ jobs:
       - name: assigne test
         run: |
           service=`gcloud run services list --format=json | jq '.[].metadata | select(.name == "supply")| .name'`
-          echo 'WYNIK2=$service' >> $GITHUB_ENV
+          if [ "\"supply\"" = $service ]; then
+            echo "WYNIK1=1" >> $GITHUB_ENV
+          else
+            echo "WYNIK1=0" >> $GITHUB_ENV
+
 
       # - name: Set var
       #   run: |
