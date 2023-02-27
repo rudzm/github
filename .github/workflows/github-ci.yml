@@ -30,7 +30,7 @@ jobs:
 
       - name: assigne test
         run: |
-          output=`gcloud compute url-maps describe supply-load-balancer --format=json | jq -r '.hostRules[] | select( .pathMatcher == "main2") | .pathMatcher ' 2>/dev/null`
+          output=`gcloud compute url-maps describe supply-load-balancer --format=json | jq -r '.hostRules[]? | select( .pathMatcher == "main2") | .pathMatcher'`
           if [ "main" = $output]; then
             echo "WYNIK1=1" >> $GITHUB_ENV
           else
