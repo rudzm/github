@@ -30,9 +30,12 @@ jobs:
 
       - name: assigne test
         run: |
-          service=`gcloud run services list --format=json`
-          name=`echo "$service" | jq '.[].metadata.name'`
-          echo "WYNIK1=$name" >> $GITHUB_ENV
+          output=`gcloud compute url-maps describe supply-load-balancer --format=json | jq -r '.hostRules[] | select( .pathMatcher == "main2") | .pathMatcher ' 2>/dev/null`
+          if [ "main" = $output]; then
+            echo "WYNIK1=1" >> $GITHUB_ENV
+          else
+            echo "WYNIK1=0" >> $GITHUB_ENV
+          fi
 
       # - name: assigne test
       #   run: |
