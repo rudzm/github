@@ -21,34 +21,9 @@ jobs:
 
       - name: Add sanitize branch to vars
         run: |-
-          BRANCH_NAME=${{ github.ref }}
-          echo GITHUB_REF_SANITIZE1=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
-      
-      - name: Add sanitize branch to vars
-        run: |-
-          BRANCH_NAME=${{ github.ref_name }}
-          echo GITHUB_REF_SANITIZE2=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
-      
-      - name: Add sanitize branch to vars
-        run: |-
-          BRANCH_NAME=${{ github.base_ref }}
-          echo GITHUB_REF_SANITIZE3=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
-      - name: Add sanitize branch to vars
-        run: |-
-          BRANCH_NAME=${{ github.head_ref }}
+          MERGE_COMMIT_MESSAGE=$(git log --format=%B -n 1 "${GITHUB_SHA}")
+          BRANCH_NAME=$(echo "$MERGE_COMMIT_MESSAGE" | grep -oP '(?<=from ).*' | awk -F/ '{print $NF}')
+          echo "Branch Name: $BRANCH_NAME"
           echo GITHUB_REF_SANITIZE4=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
 
-      - name: echo1
-        run: |
-          echo ${{ env.GITHUB_REF_SANITIZE1 }}
-          
-      - name: echo2
-        run: |
-          echo ${{ env.GITHUB_REF_SANITIZE2 }}
 
-      - name: echo3
-        run: |
-          echo ${{ env.GITHUB_REF_SANITIZE3 }}
-      - name: echo4
-        run: |
-          echo ${{ env.GITHUB_REF_SANITIZE4 }}
