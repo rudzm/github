@@ -16,12 +16,27 @@ jobs:
 
       - name: Add sanitize branch to vars
         run: |-
-          BRANCH_NAME=${{ github.head_ref || github.ref_name }}
-          echo GITHUB_REF_SANITIZE=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
+          BRANCH_NAME=${{ github.ref }}
+          echo GITHUB_REF_SANITIZE1=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
+      
+      - name: Add sanitize branch to vars
+        run: |-
+          BRANCH_NAME=${{ github.head_ref }}
+          echo GITHUB_REF_SANITIZE2=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
+      
+      - name: Add sanitize branch to vars
+        run: |-
+          BRANCH_NAME=${{ github.base_ref }}
+          echo GITHUB_REF_SANITIZE3=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
 
-      - name: echo
+      - name: echo1
         run: |
-          echo ${{ env.GITHUB_REF_SANITIZE }} 
+          echo ${{ env.GITHUB_REF_SANITIZE1 }}
+          
       - name: echo2
         run: |
-          echo ${{ env.GITHUB_REF_SANITIZE }}
+          echo ${{ env.GITHUB_REF_SANITIZE2 }}
+
+      - name: echo3
+        run: |
+          echo ${{ env.GITHUB_REF_SANITIZE3 }}
