@@ -16,5 +16,5 @@ jobs:
        
       - name: Add sanitize branch to vars
         run: |-
-          MERGE_COMMIT_MESSAGE=$(git log --format=%B -n 1 "${GITHUB_SHA}")
+          MERGE_COMMIT_MESSAGE=$(git log)
           echo "$MERGE_COMMIT_MESSAGE"
