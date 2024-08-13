@@ -14,7 +14,11 @@ jobs:
         with: 
           ref: ${{ github.ref.name }}
        
-      - name: Add sanitize branch to vars
+      - name: Test1
         run: |-
           MERGE_COMMIT_MESSAGE=$(git log)
           echo "$MERGE_COMMIT_MESSAGE"
+
+      - name: Test2
+        run: |-
+          echo "$GITHUB_BASE_REF"
