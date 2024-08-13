@@ -22,4 +22,7 @@ jobs:
 
       - name: echo
         run: |
+          echo ${{ env.BRANCH_NAME }} 
+      - name: echo2
+        run: |
           echo ${{ env.BRANCH_NAME }}
