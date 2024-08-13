@@ -1,12 +1,9 @@
 name: "Testing"
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        type: environment
-
-
+ push:
+    branches:
+      - main
 jobs:
   testing:
     runs-on: "ubuntu-latest"
@@ -17,7 +14,12 @@ jobs:
         with: 
           ref: ${{ github.ref.name }}
 
-      - name: test condition
-        if: contains( inputs.environment , 'Production')
+      - name: Get branch name
+        id: get_branch_name
         run: |
-          echo "Mamy to"
+          branch_name=$(git log -1 --pretty=format:"%d" | grep -oP '(?<=origin/)\S+(?=,)' | head -1)
+          echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
+
+      - name: echo
+        run: |
+          echo ${{ env.BRANCH_NAME }}
