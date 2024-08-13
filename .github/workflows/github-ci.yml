@@ -14,12 +14,14 @@ jobs:
         with: 
           ref: ${{ github.ref.name }}
 
-      - name: Get branch name
-        id: get_branch_name
-        run: |
-          branch_name=$(git log -1 --pretty=format:"%d" | grep -oP '(?<=origin/)\S+(?=,)' | head -1)
-          echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
+      - name: Add sanitize branch to vars
+        run: |-
+          BRANCH_NAME=${{ github.head_ref || github.ref_name }}
+          echo GITHUB_REF_SANITIZE=$(echo ${BRANCH_NAME//[\/_]/-} | tr '[:upper:]' '[:lower:]' | cut -c -40 | sed 's/\-$//') >> $GITHUB_ENV
 
       - name: echo
         run: |
-          echo ${{ env.BRANCH_NAME }}
+          echo ${{ env.GITHUB_REF_SANITIZE }} 
+      - name: echo2
+        run: |
+          echo ${{ env.GITHUB_REF_SANITIZE }}
